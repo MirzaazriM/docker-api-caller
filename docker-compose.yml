@@ -1,0 +1,29 @@
+version: '3'
+services:
+  caller:
+    build: /Users/user/Desktop/Projects/docker-api-caller/
+#    volumes:
+#      - /host/path:/container/path
+#      - /host/path:/container/path
+    ports:
+      - 8230:80
+    networks:
+      - api
+#    environment:
+#      - RESPONDER=responder
+  responder:
+      build: /Users/user/Desktop/Projects/docker-api-responder/
+      # image: image-name   # set image name
+  #    volumes:
+  #      - /host/path:/container/path
+  #      - /host/path:/container/path
+      networks:
+        - api
+  #    environment:
+  #      - RESPONDER=responder
+networks:
+  api:
+    driver: bridge
+
+#volumes:
+#  /host/path:
